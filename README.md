@@ -29,42 +29,65 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#  Design the Interface
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## JSON Editor (Left Panel):
+Allows users to input or edit a JSON schema.Provides real-time syntax highlighting and validation.Displays error messages for invalid JSON.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Form Preview (Right Panel):
+Dynamically generates a responsive form based on the JSON schema.Reflects changes in real-time as the schema is edited.
 
-## Learn More
+# JSON Editor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##  The JSON editor must:
+Support syntax highlighting.
+Validate the input JSON schema in real-time.
+Display user-friendly error messages for invalid JSON.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Implementation:
+Use Monaco Editor for syntax highlighting.
+Validate JSON using a library like ajv or custom logic.
+Display errors using a styled <p> tag.
 
-### Code Splitting
+# Form Generator
+The form generator dynamically renders fields based on the JSON schema and manages form submission.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Key Features:
+Field Types: Support text, email, select, radio buttons, and textarea fields.
+Validation: Ensure fields respect the schema-defined requirements (e.g., regex patterns, mandatory fields).
+Real-time Updates: Update the form preview as the JSON schema changes.
 
-### Analyzing the Bundle Size
+## Implementation:
+Use React Hook Form for handling form state and validation.
+Map schema fields to React components dynamically.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Responsive Design
+Ensure the layout adapts gracefully to different screen sizes.
+Stack the JSON editor and form preview vertically on smaller screens using Tailwind's responsive utilities.
 
-### Making a Progressive Web App
+# Testing
+## Unit Tests with Jest.
+Schema Validation: Test that the JSON validation logic correctly identifies errors.
+Field Rendering: Test that fields render correctly based on the schema.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## End-to-End Tests with Playwright:
+Real-Time Updates: Verify that editing the JSON schema updates the form preview in real-time.
+Form Submission: Validate that form submission triggers the expected console output or success message.
 
-### Advanced Configuration
+# Deployment
+## Host the Application:
+Use Vercel or Netlify for deployment.
+Push the project to a GitHub repository and connect it to the deployment service.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## README File:
+Setup instructions.
+Example JSON schemas.
+Local development guide.
+Link to the deployed application.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Bonus Features
+Copy Form JSON: Add a button to copy the form’s JSON schema to the clipboard.
+Dark Mode: Utilize Tailwind’s dark utilities for dark mode styling.
+Download Submissions: Implement a feature to download form submissions as a JSON file.
